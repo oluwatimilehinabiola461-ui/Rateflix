@@ -1,5 +1,5 @@
 
-const container = document.querySelector('container')
+
 // following navbar on scroll
 const navbar = document.getElementById('navbar');
 
@@ -11,60 +11,63 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// getting the search input in header
-const form = document.querySelector('form');
+// carousel
+const slidesContainer = document.querySelector('.slides');
+const apiKey = "d234eab1";
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    let query = form.querySelector('input').value
+// Option 1: specific movies
+const movies = [
+    "Spider Man Across the Spider Verse",
+    "mantis",
+    "The Dark Knight",
+    "Inception",
+    "The Matrix",
+    "Interstellar",
+    "The Shawshank Redemption",
+    "The Godfather",
+    "Pulp Fiction",
+    "Forrest Gump"
+];
 
-    tvMazeApi()
-});
+// Fetch each movie from OMDb and create a slide
+async function loadMovies() {
+    for (const title of movies) {
+        const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
+        const data = await response.json();
 
-// getting movie from API
+        if (data.Response === "True") {
+            const slide = document.createElement('div');
+            slide.classList.add('slide');
 
+            slide.innerHTML = `
+                <div class="movie-poster">
+                    <img src="${data.Poster}" alt="${data.Title}">
+                </div>
+                <div class="movie-details">
+                    <h2>${data.Title} (${data.Year})</h2>
+                    <p>${data.Plot}</p>
+                    <div class="info">Genre: ${data.Genre} | IMDb: ${data.imdbRating}</div>
+                    <button>Rate Now</button>
+                </div>
+            `;
 
+            slidesContainer.appendChild(slide);
+        }
+    }
 
-async function tvMazeApi (query) {
-    const request = await fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
-    const movies = await request.json() 
-    console.log(movies);
-    
-
-    makeImages()
-    
+    startCarousel();
 }
 
-function makeImages(movies) {
-  for (let movie in movies) {
-    let src = movie.show.image.medium;
-
-    const img = document.createElement("img")
-    img.src-src;
-
-    container.appendChild(img);
-  }
-    
-}
-
-// featured movies carousel
-const slides = document.querySelector('.slides');
-const slideCount = document.querySelectorAll(".slide").length;
 let index = 0;
-
-function nextSlide() {
-  index++;
-  slides.style.transition = "transform 0.6s ease";
-  slides.style.transform = `translateX(-${index * 100}vw)`;
-
-  if (index >=   slideCount) {
-    setTimeout(() => {
-      slides.style.transition = "none";
-      index = 0;
-      slides.style.transform = `translateX(0)`;
-    }, 600);
-  }
+function startCarousel() {
+    const slides = document.querySelectorAll('.slide');
+    setInterval(() => {
+        index++;
+        if (index >= slides.length) index = 0;
+        slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+    }, 15000); // 5 seconds per slide
 }
 
-setInterval(nextSlide, 15000);
+// Initialize
+loadMovies();
 
