@@ -11,9 +11,18 @@
 </head>
 
 <body>
+
     <header>
 
-        <div id="navbar">
+        <!-- Live Bgc -->
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="content">
+        </div>
+
+
+        <div class="navbar" id="navbar">
             <!-- Logo -->
             <div class="logo">
                 <a href="">R<span class="material-symbols-outlined">star_rate</span>TEFL<span>I</span>X</a>
@@ -21,23 +30,51 @@
 
             <!-- Navigation -->
             <nav class="nav">
-                <li><a href="">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <span>|</span>
-                <li><a href="">Categories</a></li>
+                <li class="dropdown">
+                    <a href="" class="drop">Categories </a>
+                    <div class="dropdown-content">
+                        <a href="#action">Action</a>
+                        <a href="#adventure">Adventure</a>
+                        <a href="#comedy">Comedy</a>
+                        <a href="#drama">Drama</a>
+                        <a href="#horror">Horror</a>
+                        <a href="#sci-fi">Sci-Fi</a>
+                    </div>
+                </li>
+
                 <span>|</span>
-                <li><a href="">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <span>|</span>
-                <li><a href="">Support</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
                 <span>|</span>
-                <li><a href="">Community</a></li>
+                <li><a href="community.html">Community</a></li>
             </nav>
+
+            <div class="search-icon">
+                <img src="Assets/magnifying-glass-solid-full.svg" alt="">
+                <!-- Search Overlay -->
+                <div id="searchOverlay" class="search-overlay">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search movies...">
+                        <button id="searchBtn">Search</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- FOR RESPONSIVENESS   -->
+            <div class="menu-toggle">
+                <img src="Assets/menu_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+            </div>
+
 
         </div>
         <div class="hero">
             <h2>Discover movies you will actually <span>enjoy</span>!</h2>
             <p>Find the best films, see what others think, and share your ratings</p>
-            <form action="">
-                <input type="search" name="search" id="search" placeholder="Search for movies, TV shows, actors...">
+            <form action="search.html" method="get" class="search-form">
+                <input type="search" name="q" id="search" placeholder="Search for movies, TV shows, actors...">
                 <button type="submit">Search</button>
             </form>
         </div>
@@ -50,33 +87,11 @@
     <!-- Trending Section -->
     <section class="trending">
         <h2>Trending Movies</h2>
-        <div class="movies-container">
-            <div class="both">
-                <div class="item"><a href=""><img src="assets/tom and jerry.jpg" alt=""> </a></div>
-                <p>Tom and Jerry</p>
-                <div class="info">
-                    <a href="">Cartoon</a>, <a href="">Comedy</a>. / <a href="">256 reviews</a>
-                </div>
-                <button type="submit">Preview</button>
-            </div>
 
-            <div class="both">
-                <div class="item"><a href=""><img src="assets/mantis.jpg" alt=""></a></div>
-                <p>Mantis</p>
-                <div class="info">
-                    <a href="">Action</a>, <a href="">Triller</a>. / <a href="">656 reviews</a>
-                </div>
-                <button type="submit">Preview</button>
-            </div>
-
-            <div class="both">
-                <div class="item"><a href=""><img src="assets/demon city.jpg" alt=""></a></div>
-                <p>Demon City</p>
-                <div class="info">
-                    <a href="">Horror</a>, <a href="">Fantasy</a>. / <a href="">1.2K reviews</a>
-                </div>
-                <button type="submit">Preview</button>
+        <!-- JS will inject movies here -->
+        <div class="movies-container" id="trendingMovies"></div>
     </section>
+
 
     <!-- Preview Section -->
     <section class="preview">
@@ -84,10 +99,102 @@
 
         <div class="carousel">
             <div class="slides">
-                <!-- JavaScript will insert movie slides here -->
             </div>
         </div>
+
     </section>
+    <section class="search-results">
+        <h2 id="searchTitle"></h2>
+        <div class="movies-container" id="searchResults"></div>
+    </section>
+
+
+    <!-- Genre Section -->
+    <section class="genre-section">
+        <!-- <div class="genre" id="action">
+            <p>Action</p>
+            <div class="genre-movies">
+                
+            </div>
+        </div>
+
+        <div class="genre" id="adventure">
+            <p>Adventure</p>
+            <div class="genre-movies">
+                
+            </div>
+        </div>
+
+        <div class="genre" id="comedy">
+            <p>Comedy</p>
+            <div class="genre-movies">
+                
+            </div>
+        </div>
+
+        <div class="genre" id="drama">
+            <p>Drama</p>
+            <div class="genre-movies">
+                
+            </div>
+        </div>
+
+        <div class="genre" id="horror">
+            <p>Horror</p>
+            <div class="genre-movies">
+                
+            </div>
+        </div>
+
+        <div class="genre" id="sci-fi">
+            <p>Sci-Fi</p>
+            <div class="genre-movies">
+                
+            </div>
+        </div> -->
+
+    </section>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About RATEFLIX</h2>
+                <p>Your go-to platform for discovering movies, sharing reviews, and connecting with fellow film
+                    enthusiasts.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Categories</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Community</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h2>Contact Us</h2>
+                <p>Email: oluwatimilehinabiola461@gmail.com</p>
+                <p>Phone: +234 903 133 002</p>
+
+                <div class="socials">
+                    <a href="https://www.facebook.com/share/16wfDKs6sg/"><img
+                            src="Assets/facebook-brands-solid-full (1).svg" alt="Facebook"></a>
+                    <a href="https://x.com/ABrevealer_?t=TOon1dERbz7I-aXrS7t8_g&s=09"><img
+                            src="Assets/x-twitter-brands-solid-full (1).svg" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/ab_th3_frst?igsh=MXh4cnNsMXliOXJwcQ=="><img
+                            src="Assets/instagram-brands-solid-full (1).svg" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 RATEFLIX | Designed by Abiola
+        </div>
+    </footer>
+
 
 
 
