@@ -616,5 +616,198 @@ header {
     color: #1C1C1C;
 }
 
+<!-- js new -->
+// API keys = "48f905b8", "d234eab1"
+const API_KEY = "d234eab1";
+
+/* ⭐ ADDED: GLOBAL RATING STORAGE */
+const ratings = JSON.parse(localStorage.getItem("movieRatings")) || {};
+
+function saveRating(imdbID, value) {
+  ratings[imdbID] = value;
+  localStorage.setItem("movieRatings", JSON.stringify(ratings));
+}
+
+function getRating(imdbID) {
+  return ratings[imdbID] || 0;
+}
+
+function createStarRating(imdbID, container) {
+  container.innerHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement("span");
+    star.textContent = "★";
+    star.style.cursor = "pointer";
+    star.style.fontSize = "20px";
+    star.style.color = i <= getRating(imdbID) ? "gold" : "#ccc";
+
+    star.addEventListener("click", () => {
+      saveRating(imdbID, i);
+      createStarRating(imdbID, container);
+    });
+
+    container.appendChild(star);
+  }
+}
+/* ⭐ END ADDED */
+
+
+// MAKE PAGE ACTIVE
+const navLinks = document.querySelectorAll('.nav a');
+const currentPath = window.location.pathname;
+const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+
+navLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    if (!linkHref) return;
+    const linkPage = linkHref.substring(linkHref.lastIndexOf('/') + 1);
+    if (linkPage === currentPage) link.classList.add('active');
+    else link.classList.remove('active');
+});
+
+
+// TRENDING SECTION
+const trendingContainer = document.getElementById("trendingMovies");
+
+const trendingTitles = ["Sinners", "Mantis", "Demon City"];
+
+async function loadTrendingMovies() {
+  trendingContainer.innerHTML = "";
+
+  for (let title of trendingTitles) {
+    const response = await fetch(
+      `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${API_KEY}`
+    );
+    const movie = await response.json();
+    if (movie.Response === "False") continue;
+
+    const card = document.createElement("div");
+    card.className = "both";
+
+    card.innerHTML = `
+      <div class="item">
+        <img src="${movie.Poster !== "N/A" ? movie.Poster : ""}">
+      </div>
+      <p>${movie.Title}</p>
+      <div class="info">${movie.Genre}</div>
+      <div class="rating"></div>
+      <button type="button">Preview</button>
+    `;
+
+    /* ⭐ ADDED: TRENDING RATING */
+    const ratingBox = card.querySelector(".rating");
+    createStarRating(movie.imdbID, ratingBox);
+
+    trendingContainer.appendChild(card);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadTrendingMovies);
+
+
+// CAROUSEL
+const slidesContainer = document.querySelector('.slides');
+const apiKey = "d234eab1";
+
+const movies = [
+  "Spider Man Across the Spider Verse",
+  "mantis",
+  "The Dark Knight",
+  "Inception"
+];
+
+async function loadMovies() {
+  for (const title of movies) {
+    const response = await fetch(
+      `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`
+    );
+    const data = await response.json();
+
+    if (data.Response === "True") {
+      const slide = document.createElement('div');
+      slide.classList.add('slide');
+
+      slide.innerHTML = `
+        <h2>${data.Title}</h2>
+        <button>Rate Now</button>
+        <div class="carousel-rating"></div>
+      `;
+
+      /* ⭐ ADDED: CAROUSEL RATING */
+      const btn = slide.querySelector("button");
+      const ratingDiv = slide.querySelector(".carousel-rating");
+
+      btn.addEventListener("click", () => {
+        createStarRating(data.imdbID, ratingDiv);
+      });
+
+      slidesContainer.appendChild(slide);
+    }
+  }
+}
+
+loadMovies();
+
+
+// GENRE MODAL
+const modal = document.createElement('div');
+modal.classList.add('movie-modal');
+modal.innerHTML = `
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2></h2>
+    <p></p>
+    <div class="modal-rating"></div>
+  </div>
+`;
+document.body.appendChild(modal);
+
+const modalRating = modal.querySelector(".modal-rating");
+const closeModal = modal.querySelector(".close");
+closeModal.onclick = () => modal.style.display = "none";
+
+
+// GENRE SECTION
+const genreSection = document.querySelector('.genre-section');
+const genreMovies = {
+  Action: ["Sinners", "Deadpool"]
+};
+
+async function loadGenresWithMovies() {
+  for (let genre in genreMovies) {
+    const row = document.createElement("div");
+    row.innerHTML = `<h3>${genre}</h3>`;
+    const container = document.createElement("div");
+
+    for (let title of genreMovies[genre]) {
+      const res = await fetch(
+        `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`
+      );
+      const movie = await res.json();
+      if (movie.Response === "False") continue;
+
+      const card = document.createElement("div");
+      card.innerHTML = `<img src="${movie.Poster}">`;
+
+      card.addEventListener("click", () => {
+        modal.querySelector("h2").textContent = movie.Title;
+        modal.querySelector("p").textContent = movie.Plot;
+        modal.style.display = "flex";
+
+        /* ⭐ ADDED: MODAL RATING */
+        createStarRating(movie.imdbID, modalRating);
+      });
+
+      container.appendChild(card);
+    }
+
+    row.appendChild(container);
+    genreSection.appendChild(row);
+  }
+}
+
+loadGenresWithMovies();
+
+
 
 

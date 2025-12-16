@@ -1,4 +1,10 @@
-const API_KEY = "d234eab1";
+const API_KEY = "48f905b8";
+
+const goBackButton = document.getElementById('go-back');
+    goBackButton.addEventListener('click', () => {
+        window.history.back();
+
+}); 
 
 const resultsContainer = document.getElementById("results");
 const searchTitle = document.getElementById("searchTitle");
@@ -12,6 +18,8 @@ if (!query) {
   searchTitle.textContent = `Search results for "${query}"`;
   fetchMovies(query);
 }
+
+searchTitle.classList.add("top");
 
 async function fetchMovies(searchTerm) {
   try {

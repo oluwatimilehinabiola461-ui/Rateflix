@@ -1119,7 +1119,116 @@ footer a:hover {
         padding: 40px 20px;
     }
 }
+/* Modal Overlay */
+.movie-modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
 
+/* Modal Content */
+.movie-modal .modal-content {
+    /* background-color: #fff; */
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
 
+/* Close Button */
+.movie-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
+/* Movie Poster */
+.movie-modal img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
 
+/* Movie Title */
+.movie-modal h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+/* Movie Plot */
+.movie-modal p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Movie Info */
+.movie-modal .info {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Stars */
+.movie-modal .rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.movie-modal .rating .star {
+    font-size: 28px;
+    cursor: pointer;
+    color: gray;
+    margin: 0 5px;
+    transition: color 0.2s;
+}
+
+.movie-modal .rating .star:hover,
+.movie-modal .rating .star:hover ~ .star {
+    color: gold;
+}
+
+/* Rate Button */
+.movie-modal .rate-button {
+    padding: 10px 25px;
+    background-color: #ff6600;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.movie-modal .rate-button:hover {
+    background-color: #e65c00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .movie-modal .modal-content {
+    padding: 15px;
+}
+    .movie-modal h2 {
+    font-size: 20px;
+}
+.movie-modal p {
+    font-size: 14px;
+}
+.movie-modal .rating .star {
+    font-size: 24px;
+}
+}
