@@ -252,3 +252,24 @@ function startCarousel() {
     }, 15000);
 }
 startCarousel();
+
+// RESPONSIVENESS JS
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav');
+
+// Toggle main nav
+menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+});
+
+// Toggle dropdowns in mobile
+const dropdowns = document.querySelectorAll('.nav .dropdown');
+
+dropdowns.forEach(drop => {
+    const trigger = drop.querySelector('.drop');
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        drop.classList.toggle('show');
+    });
+});
+

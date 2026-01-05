@@ -663,162 +663,8 @@ footer a:hover {
     font-size: 16px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .about-hero h1 {
-        font-size: 36px;
-    }
-
-    .about-container {
-        grid-template-columns: 1fr;
-    }
-}
 
 
-
-
-/* PAGE RESPONSIVENESS */
-
-@media (max-width: 768px) {
-
-  /* NAVBAR  */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-}
-
-.nav {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.95);
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    border-radius: 10px;
-    display: none;
-    z-index: 1000;
-}
-
-.nav li {
-    list-style: none;
-}
-
-.nav span {
-    display: none;
-}
-
-.menu-toggle {
-    display: block;
-    cursor: pointer;
-    width: 28px;
-}
-
-  /*  HERO  */
-.hero h2 {
-    font-size: 28px;
-    text-align: center;
-  }
-
-  .hero p {
-    font-size: 15px;
-    text-align: center;
-  }
-
-  .search-form {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .search-form input,
-  .search-form button {
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  /*  TRENDING  */
-  .trending {
-    height: auto;
-    padding: 20px 10px;
-  }
-
-  .trending h2 {
-    font-size: 28px;
-    margin-left: 10px;
-  }
-
-  .movies-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-left: 0;
-  }
-
-  .item {
-    width: 100%;
-    height: 280px;
-  }
-
-  .both p {
-    font-size: 16px;
-  }
-
-  /*  PREVIEW */
-  .slide {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-  }
-
-  .movie-poster video {
-    width: 100%;
-    height: 220px;
-  }
-
-  .movie-details {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 15px;
-  }
-
-  .movie-details h2 {
-    font-size: 24px;
-  }
-
-  .movie-details p {
-    font-size: 15px;
-  }
-
-  /*  GENRE SECTION  */
-  .genre-row {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-
-  .genre-row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .genre-movie {
-    min-width: 150px;
-  }
-
-  /*  FOOTER  */
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 25px;
-  }
-
-  .footer-section {
-    width: 100%;
-  }
-
-}
 
 /* CATEGORIES DROPDOWN */
 /* Dropdown on hover */
@@ -988,21 +834,7 @@ footer a:hover {
     display: block;
 }
 
-/* MEDIA QUERY FOR SUPPORT PAGE */
-@media (max-width: 768px) {
-    .support-hero h1 {
-        font-size: 36px;
-    }
 
-    .support-container {
-        grid-template-columns: 1fr;
-    }
-    .faq .question {
-        font-size: 18px;
-    }
-}
-
-/* COMMUNITY STYLING */
 
 /* COMMUNITY PAGE */
 
@@ -1109,16 +941,7 @@ footer a:hover {
     color: #FFD700;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .community-hero h1 {
-        font-size: 40px;
-    }
 
-    .community-feed {
-        padding: 40px 20px;
-    }
-}
 /* Modal Overlay */
 .movie-modal {
     display: none; 
@@ -1217,8 +1040,152 @@ footer a:hover {
     background-color: #e65c00;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* PAGE RESPONSIVENESS */
+
+/* @media (max-width: 768px) { */
+
+  /* NAVBAR  */
+/* .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.nav {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    z-index: 1000;
+}
+
+.nav li {
+    list-style: none;
+}
+
+.nav span {
+    display: none;
+}
+
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    width: 28px;
+}
+
+  /*  HERO  */
+/* .hero h2 {
+    font-size: 28px;
+    text-align: center;
+}
+
+.hero p {
+    font-size: 15px;
+    text-align: center;
+}
+
+.search-form {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.search-form input,
+.search-form button {
+    width: 90%;
+    margin: 0 auto;
+  } */
+
+  /*  TRENDING  */
+  /* .trending {
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .trending h2 {
+    font-size: 28px;
+    margin-left: 10px;
+  }
+
+  .movies-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-left: 0;
+  }
+
+  .item {
+    width: 100%;
+    height: 280px;
+  }
+
+  .both p {
+    font-size: 16px;
+  } */
+
+  /*  PREVIEW */
+  /* .slide {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .movie-poster video {
+    width: 100%;
+    height: 220px;
+  }
+
+  .movie-details {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .movie-details h2 {
+    font-size: 24px;
+  }
+
+  .movie-details p {
+    font-size: 15px;
+  } */
+
+  /*  GENRE SECTION  */
+  /* .genre-row {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .genre-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .genre-movie {
+    min-width: 150px;
+  } */
+
+  /*  FOOTER  */
+  /* .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+}
+
+
+Responsive */
+/* @media (max-width: 768px) {
     .movie-modal .modal-content {
     padding: 15px;
 }
@@ -1231,4 +1198,67 @@ footer a:hover {
 .movie-modal .rating .star {
     font-size: 24px;
 }
+} */
+
+/* Mobile */
+/* @media (max-width: 768px) {
+    .community-hero h1 {
+        font-size: 40px;
+    }
+
+    .community-feed {
+        padding: 40px 20px;
+    }
+} */ 
+
+/* PAGE RESPONSIVENESS */
+/* MOBILE MENU AND DROPDOWN FIX */
+@media screen and (max-width: 1024px) {
+    .nav {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        flex-direction: column;
+        background-color: #1C1C1C;
+        width: 100%;
+        padding: 20px 0;
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+    .nav.show {
+        left: 0;
+    }
+
+.nav span {
+    display: none;
 }
+
+    .nav .dropdown-content {
+        position: relative;
+        top: 0;
+        left: 0;
+        background-color: #1C1C1C;
+        display: none;
+        width: 100%;
+        padding-left: 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .nav .dropdown.show .dropdown-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav a, .nav .drop {
+        padding: 15px 20px;
+        font-size: 18px;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        cursor: pointer;
+    }
+}
+
