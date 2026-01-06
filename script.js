@@ -1,5 +1,5 @@
 // API keys = "48f905b8", "d234eab1"
-const API_KEY = "48f905b8";
+const API_KEY = "d234eab1";
 
 // MAKE PAGE ACTIVE
 const navLinks = document.querySelectorAll('.nav a');
@@ -238,6 +238,7 @@ async function loadMoviesCarousel() {
             slidesContainer.appendChild(slide);
         }
     }
+    startCarousel();
 }
 loadMoviesCarousel();
 
@@ -249,9 +250,9 @@ function startCarousel() {
         index++;
         if (index >= slides.length) index = 0;
         slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-    }, 15000);
+    }, 10000);
 }
-startCarousel();
+
 
 // RESPONSIVENESS JS
 // const menuToggle = document.querySelector('.menu-toggle');

@@ -482,11 +482,11 @@ header {
     overflow-x: auto;
     gap: 20px;
     padding: 10px 0;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; 
 }
 
 .genre-movies::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none; 
 }
 
 /* Individual movie card */
@@ -1043,7 +1043,23 @@ footer a:hover {
 
  /* RESPONSIVENESS */
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
+
+    /* NAVBAR */
+    .navbar {
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+
+    .logo a {
+        font-size: 12px;
+    }
+
+    .search-icon img {
+        margin-right: 10px;
+        height: 20px;
+        width: 20px;
+    }
 
     /* NAVBAR */
     .nav.show {
@@ -1118,17 +1134,18 @@ footer a:hover {
     /* TRENDING */
     .trending {
         height: auto;
-        padding: 20px 10px;
+        padding: 60px 30px;
     }
 
     .trending h2 {
         font-size: 28px;
         margin-left: 10px;
+        text-align: center;
     }
 
     .movies-container {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 40px;
         margin-left: 0;
     }
 
@@ -1137,15 +1154,39 @@ footer a:hover {
         height: 280px;
     }
 
+    /* .item img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    } */
+
     .both p {
         font-size: 16px;
     }
 
     /* PREVIEW / CAROUSEL */
+
+    .preview-top {
+        margin-left: 20px;
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .carousel {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .slides {
+    display: flex;
+    transition: transform 0.6s ease;
+}
+
     .slide {
         flex-direction: column;
         height: auto;
         padding: 20px;
+
     }
 
     .movie-poster img {
@@ -1173,7 +1214,9 @@ footer a:hover {
         gap: 10px;
         overflow-x: auto;
         padding-bottom: 10px;
+        height: 250px;
     }
+
 
     .genre-row::-webkit-scrollbar {
         display: none;
@@ -1181,6 +1224,10 @@ footer a:hover {
 
     .genre-movie-card {
         min-width: 150px;
+    }
+
+    .genre-movie-card img {
+        height: 220px;
     }
 
     /* COMMUNITY PAGE */
